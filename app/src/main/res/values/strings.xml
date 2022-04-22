@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GadgetStore</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="new_user_register_now">New user? Register Now</string>
+    <string name="top_icon">Top Icon</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="or">OR</string>
+    <string name="google_icon">Google Icon</string>
+    <string name="facebook_icon">Facebook Icon</string>
+
 </resources>
