@@ -37,10 +37,12 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         back = findViewById(R.id.goBack);
         back.setOnClickListener(this);
 
-        emailEditText = findViewById(R.id.email);
+        emailEditText = findViewById(R.id.emailEditText);
 
         resetButton = findViewById(R.id.resetButton);
         resetButton.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
         progressBar = findViewById(R.id.progressBar);
     }
@@ -79,6 +81,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "Check your email to reset your password", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else{
                     Toast.makeText(getApplicationContext(), "Try again! Something went wrong!", Toast.LENGTH_LONG).show();
                 }
