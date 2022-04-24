@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GadgetStore</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="new_user_register_now">New user? Register Now</string>
+    <string name="top_icon">Top Icon</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="or">OR</string>
+    <string name="register">Register</string>
+    <string name="google_icon">Google Icon</string>
+    <string name="facebook_icon">Facebook Icon</string>
+    <string name="already_have_an_account">Already Have an Account?</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="city">City</string>
+
+</resources>
