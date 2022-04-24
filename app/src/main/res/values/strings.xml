@@ -14,5 +14,8 @@
     <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="city">City</string>
-
+    <string name="back">Back</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="company_name">Gadget Store</string>
 </resources>
