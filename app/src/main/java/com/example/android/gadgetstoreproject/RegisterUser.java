@@ -120,7 +120,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                             Toast.LENGTH_LONG).show();
                                         }
                                     });
-
+                            startActivity(new Intent(RegisterUser.this, MainActivity.class));
                             progressBar.setVisibility(View.GONE);
                         }
                         else {
