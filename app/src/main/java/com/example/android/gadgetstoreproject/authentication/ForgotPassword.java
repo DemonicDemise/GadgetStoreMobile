@@ -1,4 +1,4 @@
-package com.example.android.gadgetstoreproject;
+package com.example.android.gadgetstoreproject.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.gadgetstoreproject.MainActivity;
+import com.example.android.gadgetstoreproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

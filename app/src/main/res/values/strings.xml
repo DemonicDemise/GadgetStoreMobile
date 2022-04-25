@@ -18,4 +18,5 @@
     <string name="enter_your_email">Enter Your Email</string>
     <string name="reset_password">Reset Password</string>
     <string name="company_name">Gadget Store</string>
+    <string name="welcome_to_gadget_store_app">Welcome to Gadget Store App!</string>
 </resources>

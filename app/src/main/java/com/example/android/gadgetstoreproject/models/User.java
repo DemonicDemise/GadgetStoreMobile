@@ -1,4 +1,4 @@
-package com.example.android.gadgetstoreproject;
+package com.example.android.gadgetstoreproject.models;
 
 public class User {
     public String name, email, city, password;
