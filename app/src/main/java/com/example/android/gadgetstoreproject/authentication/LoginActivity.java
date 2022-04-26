@@ -72,8 +72,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(mAuth.getCurrentUser() != null){
             progressBar.setVisibility(View.VISIBLE);
-            startActivity(new Intent());
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             Toast.makeText(getApplicationContext(), "Wait you are already logged in", Toast.LENGTH_LONG).show();
+            finish();
         }
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

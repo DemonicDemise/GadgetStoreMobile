@@ -19,4 +19,13 @@
     <string name="reset_password">Reset Password</string>
     <string name="company_name">Gadget Store</string>
     <string name="welcome_to_gadget_store_app">Welcome to Gadget Store App!</string>
+    <string name="home">Home</string>
+    <string name="gallery">Gallery</string>
+    <string name="profile">Profile</string>
+    <string name="category">Category</string>
+    <string name="settings">Settings</string>
+    <string name="company_link">https://www.gagetstore.com</string>
+    
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
