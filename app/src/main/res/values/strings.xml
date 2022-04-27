@@ -32,4 +32,6 @@
     <string name="share">Share</string>
     <string name="rate_us">Rate Us</string>
     <string name="products">Products</string>
+    <string name="gadgets">Gadgets</string>
+    <string name="gadgets_and_mobile_phones">Gadgets and Mobile Phones</string>
 </resources>

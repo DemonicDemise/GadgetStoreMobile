@@ -19,10 +19,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
+import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ProgressBar progressBar;
     private Button signIn;
@@ -37,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        signIn = findViewById(R.id.btnLogin);
-        signIn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -72,14 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navigationView.setCheckedItem(R.id.nav_home);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btnLogin:
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()){
+//            case R.id.btnLogin:
+//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//                break;
+//        }
+//    }
 
     //Closes navigation menu when back button is pressed
     @Override
@@ -123,6 +121,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.nav_rate_us:
                 Toast.makeText(getApplicationContext(), R.string.rate_us, Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_category:
+                startActivity(new Intent(getApplicationContext(), CategoryFragment.class));
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
