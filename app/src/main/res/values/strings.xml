@@ -34,4 +34,9 @@
     <string name="products">Products</string>
     <string name="gadgets">Gadgets</string>
     <string name="gadgets_and_mobile_phones">Gadgets and Mobile Phones</string>
+    <string name="search_item_here">Search Your Item hear ...</string>
+    <string name="popular_products">Popular Products</string>
+    <string name="view_all">View All</string>
+    <string name="explore_products">Explore Products</string>
+    <string name="recommended_products">Recommended Products</string>
 </resources>

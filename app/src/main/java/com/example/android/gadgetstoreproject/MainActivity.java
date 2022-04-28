@@ -7,6 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +25,8 @@ import android.widget.Toast;
 
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
 import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;
+import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
+import com.example.android.gadgetstoreproject.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -61,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //To make sure that fragments are clickable
         navigationView.bringToFront();
         //Navigation Drawer Menu
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -69,15 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setCheckedItem(R.id.nav_home);
     }
-
-//    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()){
-//            case R.id.btnLogin:
-//                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-//                break;
-//        }
-//    }
 
     //Closes navigation menu when back button is pressed
     @Override
@@ -94,7 +94,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                replaceFragment(new HomeFragment());
+                break;
+            case R.id.nav_products:
+                replaceFragment(new ProfileFragment());
+                break;
+            case R.id.nav_category:
+                replaceFragment(new CategoryFragment());
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
@@ -113,20 +119,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     finish();
                 }
                 break;
-            case R.id.nav_products:
-                Toast.makeText(getApplicationContext(), R.string.products, Toast.LENGTH_LONG).show();
-                break;
+
             case R.id.nav_share:
                 Toast.makeText(getApplicationContext(), R.string.share, Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_rate_us:
                 Toast.makeText(getApplicationContext(), R.string.rate_us, Toast.LENGTH_LONG).show();
                 break;
-            case R.id.nav_category:
-                startActivity(new Intent(getApplicationContext(), CategoryFragment.class));
-                break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.constraint_layout, fragment);
+        fragmentTransaction.commit();
     }
 }
