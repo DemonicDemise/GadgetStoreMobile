@@ -40,7 +40,6 @@ public class PopularAdapters extends RecyclerView.Adapter<PopularAdapters.ViewHo
         holder.description.setText(popularModelList.get(position).getDescription());
         holder.rating.setText(popularModelList.get(position).getRating());
         holder.discount.setText(popularModelList.get(position).getDiscount());
-
     }
 
     @Override
@@ -58,7 +57,7 @@ public class PopularAdapters extends RecyclerView.Adapter<PopularAdapters.ViewHo
             popImg = itemView.findViewById(R.id.pop_img);
             name = itemView.findViewById(R.id.pop_name);
             description = itemView.findViewById(R.id.pop_desc);
-            rating = itemView.findViewById(R.id.ratingBar_small);
+            rating = itemView.findViewById(R.id.pop_rating);
             discount = itemView.findViewById(R.id.pop_discount);
 
         }
