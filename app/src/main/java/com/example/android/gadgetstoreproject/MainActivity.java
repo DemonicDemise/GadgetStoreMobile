@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseAuth mAuth;
 
     DrawerLayout drawerLayout;
-    NavigationView navigationView;
+    NavigationView navigationView, bottomNavigationView;
     Toolbar toolbar;
 
     @Override
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
 
         navigationView.setNavigationItemSelectedListener(this);
 
