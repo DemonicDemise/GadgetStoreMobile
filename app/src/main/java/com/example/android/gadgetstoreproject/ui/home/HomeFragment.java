@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +49,10 @@ public class HomeFragment extends Fragment {
     List<RecommendedModel> recommendedList;
     RecommendedAdapter recommendedAdapter;
 
+    //ProgressBar and ScrollView
+    ProgressBar progressBar;
+    ScrollView scrollView;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -57,11 +63,18 @@ public class HomeFragment extends Fragment {
         categoryRec = root.findViewById(R.id.cat_rec);
         recommendedRec = root.findViewById(R.id.rec_rec);
 
+        //ProgressBar
+        progressBar = root.findViewById(R.id.progressBar);
+        scrollView = root.findViewById(R.id.scrollView);
+
         //Popular Items
         popularRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         popularModelList = new ArrayList<>();
         popularAdapters = new PopularAdapters(getActivity(), popularModelList);
         popularRec.setAdapter(popularAdapters);
+
+        progressBar.setVisibility(View.VISIBLE);
+        scrollView.setVisibility(View.GONE);
 
         db.collection("PopularProducts")
                 .get()
@@ -74,6 +87,8 @@ public class HomeFragment extends Fragment {
                                 popularModelList.add(popularModel);
                                 popularAdapters.notifyDataSetChanged();
                             }
+                            progressBar.setVisibility(View.GONE);
+                            scrollView.setVisibility(View.VISIBLE);
                         } else {
                             Toast.makeText(getActivity(), "Error " + task.getException(), Toast.LENGTH_LONG).show();
                         }
