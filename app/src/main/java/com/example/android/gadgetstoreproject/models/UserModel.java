@@ -1,12 +1,12 @@
 package com.example.android.gadgetstoreproject.models;
 
-public class User {
+public class UserModel {
     public String name, email, city, password;
 
-    public User(){
+    public UserModel(){
     }
 
-    public User(String name,String email, String city){
+    public UserModel(String name, String email, String city){
         this.name = name;
         this.email = email;
         this.city = city;

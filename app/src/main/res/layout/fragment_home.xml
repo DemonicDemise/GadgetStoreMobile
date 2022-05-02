@@ -117,7 +117,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_margin="5dp"
-            android:id="@+id/recommended_rec"
+            android:id="@+id/rec_rec"
             android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>

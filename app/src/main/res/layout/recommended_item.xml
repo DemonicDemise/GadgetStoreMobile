@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <ImageView
+            android:id="@+id/rec_img"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/img_pop" />
+        <TextView
+            android:id="@+id/rec_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="19dp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:fontFamily="@font/baloo"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/rec_desc"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Description"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RatingBar
+                style="?android:attr/ratingBarStyleSmall"
+                android:theme="@style/MyRatingBar"
+                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="4"
+                android:numStars="4" />
+            <TextView
+                android:id="@+id/rec_rating"
+                android:text="5.0"
+                android:layout_marginTop="3dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

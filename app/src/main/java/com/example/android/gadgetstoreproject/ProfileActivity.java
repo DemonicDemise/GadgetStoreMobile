@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.gadgetstoreproject.models.User;
+import com.example.android.gadgetstoreproject.models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -53,11 +53,11 @@ public class ProfileActivity extends AppCompatActivity {
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
-                if(userProfile != null){
-                    String email = userProfile.email;
-                    String name = userProfile.name;
-                    String city = userProfile.city;
+                UserModel userModelProfile = snapshot.getValue(UserModel.class);
+                if(userModelProfile != null){
+                    String email = userModelProfile.email;
+                    String name = userModelProfile.name;
+                    String city = userModelProfile.city;
 
                     nameTextView.setText(name);
                     emailTextView.setText(email);

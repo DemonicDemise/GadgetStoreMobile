@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android.gadgetstoreproject.MainActivity;
 import com.example.android.gadgetstoreproject.R;
-import com.example.android.gadgetstoreproject.models.User;
+import com.example.android.gadgetstoreproject.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -110,12 +110,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            User user = new User(name, email, city);
+                            UserModel userModel = new UserModel(name, email, city);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference myRef = database.getReference("Users");
                             myRef.child(FirebaseAuth.getInstance().getUid())
-                                    .setValue(user)
+                                    .setValue(userModel)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
