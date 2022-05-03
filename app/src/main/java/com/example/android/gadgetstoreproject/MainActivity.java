@@ -24,8 +24,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
+import com.example.android.gadgetstoreproject.ui.cart.MyCartFragment;
 import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;
 import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
+import com.example.android.gadgetstoreproject.ui.order.MyOrderFragment;
+import com.example.android.gadgetstoreproject.ui.product.NewProductFragment;
 import com.example.android.gadgetstoreproject.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_home);
@@ -98,10 +100,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new HomeFragment());
                 break;
             case R.id.nav_products:
-                replaceFragment(new ProfileFragment());
+                replaceFragment(new NewProductFragment());
                 break;
             case R.id.nav_category:
                 replaceFragment(new CategoryFragment());
+                break;
+            case R.id.nav_orders:
+                replaceFragment(new MyOrderFragment());
+                break;
+            case R.id.nav_cart:
+                replaceFragment(new MyCartFragment());
                 break;
             case R.id.nav_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));

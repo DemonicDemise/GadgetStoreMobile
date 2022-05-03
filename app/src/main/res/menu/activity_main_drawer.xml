@@ -19,6 +19,16 @@
             android:icon="@drawable/ic_shopping_cart"
             android:title="@string/products"
             />
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/user_orders"
+            android:title="@string/orders"
+            />
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@drawable/user_add_to_cart"
+            android:title="@string/cart"
+            />
     </group>
     <item android:title="Profile">
         <menu>

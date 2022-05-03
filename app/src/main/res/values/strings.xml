@@ -39,4 +39,9 @@
     <string name="view_all">View All</string>
     <string name="explore_products">Explore Products</string>
     <string name="recommended_products">Recommended Products</string>
+    <string name="no_product">Sorry There Is No New Product Yet</string>
+    <string name="cart_empty">Your Cart Is Empty</string>
+    <string name="no_purchase">You Have Not Purchased Anything Yet</string>
+    <string name="orders">Orders</string>
+    <string name="cart">Cart</string>
 </resources>
