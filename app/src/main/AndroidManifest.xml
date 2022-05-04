@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GadgetStoreProject">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".ViewAllActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".authentication.LoginActivity"
             android:exported="false"

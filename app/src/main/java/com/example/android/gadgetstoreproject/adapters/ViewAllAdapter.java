@@ -1,6 +1,7 @@
 package com.example.android.gadgetstoreproject.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.android.gadgetstoreproject.DetailActivity;
 import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.ViewAllActivity;
 import com.example.android.gadgetstoreproject.models.ViewAllModel;
@@ -39,7 +41,16 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
         holder.name.setText(viewAllModelsList.get(position).getName());
         holder.description.setText(viewAllModelsList.get(position).getDescription());
         holder.rating.setText(viewAllModelsList.get(position).getRating());
-        holder.price.setText(viewAllModelsList.get(position).getPrice() + "/kg");
+        holder.price.setText(viewAllModelsList.get(position).getPrice() + "/$");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("detail", viewAllModelsList.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
