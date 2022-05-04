@@ -35,7 +35,6 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Glide.with(context).load(recommendedModelsList.get(position).getImg_url()).into(holder.recImg);
         holder.name.setText(recommendedModelsList.get(position).getName());
         holder.description.setText(recommendedModelsList.get(position).getDescription());

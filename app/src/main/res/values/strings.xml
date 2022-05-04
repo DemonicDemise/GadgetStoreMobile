@@ -25,7 +25,7 @@
     <string name="category">Category</string>
     <string name="settings">Settings</string>
     <string name="company_link">https://www.gagetstore.com</string>
-    
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="logout">Logout</string>
@@ -44,4 +44,7 @@
     <string name="no_purchase">You Have Not Purchased Anything Yet</string>
     <string name="orders">Orders</string>
     <string name="cart">Cart</string>
+    <string name="discount">20% Off</string>
+    <string name="description">Description</string>
+    <string name="price">Price: $</string>
 </resources>

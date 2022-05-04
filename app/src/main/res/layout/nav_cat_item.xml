@@ -34,6 +34,7 @@
             android:layout_weight="1"
             android:layout_width="230dp"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/nav_cat_name"
                 android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/baloo"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -60,7 +61,7 @@
                 android:gravity="bottom"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="20% OFF"
+                android:text="@string/discount"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 android:textStyle="bold" />

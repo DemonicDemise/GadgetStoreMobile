@@ -1,6 +1,7 @@
 package com.example.android.gadgetstoreproject.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.ViewAllActivity;
 import com.example.android.gadgetstoreproject.models.CategoryModel;
 
 import java.util.List;
@@ -34,6 +36,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Glide.with(context).load(categoryList.get(position).getImg_url()).into(holder.categoryImg);
         holder.name.setText(categoryList.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewAllActivity.class);
+                intent.putExtra("type", categoryList.get(position).getType());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
