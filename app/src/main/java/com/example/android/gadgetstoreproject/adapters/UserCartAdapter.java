@@ -1,12 +1,14 @@
 package com.example.android.gadgetstoreproject.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,6 +21,7 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
 
     private Context context;
     private List<UserCartModel> userCartModelList;
+    int totalPrice = 0;
 
     public UserCartAdapter(Context context, List<UserCartModel> userCartModelList) {
         this.context = context;
@@ -39,6 +42,12 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
         holder.time.setText(userCartModelList.get(position).getCurrentTime());
         holder.quantity.setText(userCartModelList.get(position).getTotalQuantity());
         holder.totalPrice.setText(String.valueOf(userCartModelList.get(position).getTotalPrice()));
+
+        //Pass Total Price to User Cart Fragment
+        totalPrice = totalPrice + userCartModelList.get(position).getTotalPrice();
+        Intent intent = new Intent("UserTotalAmount");
+        intent.putExtra("totalAmount", totalPrice);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override

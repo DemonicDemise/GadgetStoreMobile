@@ -1,14 +1,20 @@
 package com.example.android.gadgetstoreproject.ui.cart;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +42,7 @@ public class UserCartFragment extends Fragment {
 
     private ProgressBar progressBar;
 
+    private TextView overTotalAmount;
 
     public UserCartFragment(){
 
@@ -54,6 +61,11 @@ public class UserCartFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         progressBar = root.findViewById(R.id.progressBar);
+
+        overTotalAmount = root.findViewById(R.id.total_price);
+
+        LocalBroadcastManager.getInstance(getActivity())
+                .registerReceiver(mMessageReceiver, new IntentFilter("UserTotalAmount"));
 
         userCartModelList = new ArrayList<>();
         userCartAdapter = new UserCartAdapter(getActivity(), userCartModelList);
@@ -78,4 +90,13 @@ public class UserCartFragment extends Fragment {
 
         return root;
     }
+
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            int totalBill = intent.getIntExtra("totalAmount", 0);
+            overTotalAmount.setText("Total Bill: " + totalBill + "$");
+        }
+    };
 }
