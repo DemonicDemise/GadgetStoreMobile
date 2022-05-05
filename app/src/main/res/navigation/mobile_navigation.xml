@@ -30,13 +30,13 @@
     </fragment>
     <fragment
         android:id="@+id/user_orders"
-        android:name="com.example.android.gadgetstoreproject.ui.order.MyOrderFragment"
+        android:name="com.example.android.gadgetstoreproject.ui.order.UserOrderFragment"
         android:label="@string/orders"
         tools:layout="@layout/fragment_my_order">
     </fragment>
     <fragment
         android:id="@+id/user_cart"
-        android:name="com.example.android.gadgetstoreproject.ui.cart.MyCartFragment"
+        android:name="com.example.android.gadgetstoreproject.ui.cart.UserCartFragment"
         android:label="@string/cart"
         tools:layout="@layout/fragment_cart">
     </fragment>

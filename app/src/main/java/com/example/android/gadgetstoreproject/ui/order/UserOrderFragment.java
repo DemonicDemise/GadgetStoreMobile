@@ -1,4 +1,4 @@
-package com.example.android.gadgetstoreproject.ui.cart;
+package com.example.android.gadgetstoreproject.ui.order;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.android.gadgetstoreproject.R;
 
-public class MyCartFragment extends Fragment {
-    public MyCartFragment(){
+public class UserOrderFragment extends Fragment {
+
+    public UserOrderFragment(){
 
     }
 
@@ -20,6 +21,6 @@ public class MyCartFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        return inflater.inflate(R.layout.fragment_my_order, container, false);
     }
 }

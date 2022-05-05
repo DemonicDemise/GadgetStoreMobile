@@ -42,6 +42,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:text="Already Have an Account?"
+        android:fontFamily="@font/alice"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -60,6 +61,7 @@
         android:drawableStart="@drawable/ic_name"
         android:drawablePadding="16dp"
         android:ems="10"
+        android:fontFamily="@font/alice"
         android:hint="@string/name"
         android:inputType="textPersonName"
         android:padding="16dp"
@@ -98,6 +100,8 @@
         android:drawableStart="@drawable/ic_city"
         android:drawablePadding="16dp"
         android:ems="10"
+        android:fontFamily="@font/alice"
+
         android:hint="@string/city"
         android:inputType="text"
         android:padding="16dp"
@@ -135,6 +139,8 @@
         android:text="@string/register"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        android:fontFamily="@font/alice"
+
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -152,6 +158,7 @@
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/alice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />

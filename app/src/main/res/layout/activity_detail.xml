@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/baloo"
+        android:fontFamily="@font/alice"
         android:text="@string/price"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/baloo"
+        android:fontFamily="@font/alice"
         android:text="30"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"
@@ -74,7 +74,7 @@
         android:id="@+id/datailed_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloo"
+        android:fontFamily="@font/alice"
         android:layout_marginTop="14dp"
         android:layout_marginRight="10dp"
         android:text="4.0"
@@ -86,7 +86,7 @@
         android:id="@+id/detail_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloo"
+        android:fontFamily="@font/alice"
         android:text="@string/description"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
@@ -163,6 +163,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,7 +60,6 @@ public class DetailActivity extends AppCompatActivity {
         final Object object = getIntent().getSerializableExtra("detail");
         if(object instanceof ViewAllModel){
             viewAllModel = (ViewAllModel) object;
-
         }
 
         detailedImg = findViewById(R.id.img_detail);
@@ -79,6 +78,7 @@ public class DetailActivity extends AppCompatActivity {
             description.setText(viewAllModel.getDescription());
             price.setText(viewAllModel.getPrice());
 
+            totalPrice = totalQuantity * Integer.valueOf(viewAllModel.getPrice());
         }
 
         addToCart = findViewById(R.id.add_to_cart);
@@ -97,7 +97,6 @@ public class DetailActivity extends AppCompatActivity {
                     totalQuantity++;
                     quantity.setText(String.valueOf(totalQuantity));
                     totalPrice = totalQuantity * Integer.valueOf(viewAllModel.getPrice());
-                    price.setText(String.valueOf(totalPrice));
                 }
             }
         });
@@ -110,7 +109,6 @@ public class DetailActivity extends AppCompatActivity {
                     totalQuantity--;
                     quantity.setText(String.valueOf(totalQuantity));
                     totalPrice = totalQuantity * Integer.valueOf(viewAllModel.getPrice());
-                    price.setText(String.valueOf(totalPrice));
                 }
             }
         });

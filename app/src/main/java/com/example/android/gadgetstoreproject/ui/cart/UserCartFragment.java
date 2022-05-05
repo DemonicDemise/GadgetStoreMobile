@@ -1,0 +1,81 @@
+package com.example.android.gadgetstoreproject.ui.cart;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.adapters.UserCartAdapter;
+import com.example.android.gadgetstoreproject.models.UserCartModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserCartFragment extends Fragment {
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore mDb;
+
+    private RecyclerView recyclerView;
+    private UserCartAdapter userCartAdapter;
+    private List<UserCartModel> userCartModelList;
+
+    private ProgressBar progressBar;
+
+
+    public UserCartFragment(){
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        mDb = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        recyclerView = root.findViewById(R.id.cart_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        progressBar = root.findViewById(R.id.progressBar);
+
+        userCartModelList = new ArrayList<>();
+        userCartAdapter = new UserCartAdapter(getActivity(), userCartModelList);
+        recyclerView.setAdapter(userCartAdapter);
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        mDb.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
+                .collection("CurrentUser").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot documentSnapshot : task.getResult().getDocuments()){
+                        UserCartModel userCartModel = documentSnapshot.toObject(UserCartModel.class);
+                        userCartModelList.add(userCartModel);
+                        userCartAdapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+
+        return root;
+    }
+}
