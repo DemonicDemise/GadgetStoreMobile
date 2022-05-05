@@ -3,6 +3,7 @@ package com.example.android.gadgetstoreproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,12 @@ public class DetailActivity extends AppCompatActivity {
     Toolbar detailedToolbar;
 
     ViewAllModel viewAllModel = null;
+
+    ImageView addItemImg, removeItemImg;
+
+    TextView quantity;
+    int totalQuantity = 1;
+    int totalPrice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +56,35 @@ public class DetailActivity extends AppCompatActivity {
             rating.setText(viewAllModel.getRating());
             description.setText(viewAllModel.getDescription());
             price.setText("Price: $" + viewAllModel.getPrice());
+
+            totalPrice = totalQuantity * Integer.valueOf(viewAllModel.getPrice());
         }
 
         addToCart = findViewById(R.id.add_to_cart);
+
+        addItemImg = findViewById(R.id.add_item);
+        removeItemImg = findViewById(R.id.remove_item);
+
+        quantity= findViewById(R.id.detail_quantity);
+
+        addItemImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(totalQuantity < 10){
+                    totalQuantity++;
+                    quantity.setText(String.valueOf(totalQuantity));
+                }
+            }
+        });
+
+        removeItemImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(totalQuantity > 0){
+                    totalQuantity--;
+                    quantity.setText(String.valueOf(totalQuantity));
+                }
+            }
+        });
     }
 }
