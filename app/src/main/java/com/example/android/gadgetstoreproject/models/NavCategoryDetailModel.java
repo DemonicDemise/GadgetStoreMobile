@@ -1,18 +1,20 @@
 package com.example.android.gadgetstoreproject.models;
 
-public class NavCategoryModel {
+public class NavCategoryDetailModel {
     String name;
-    String discount;
+    String description;
+    String price;
     String img_url;
     String type;
 
-    public NavCategoryModel(){
+    public NavCategoryDetailModel(){
 
     }
 
-    public NavCategoryModel(String name, String discount, String img_url, String type) {
+    public NavCategoryDetailModel(String name, String description, String price, String img_url, String type) {
         this.name = name;
-        this.discount = discount;
+        this.description = description;
+        this.price = price;
         this.img_url = img_url;
         this.type = type;
     }
@@ -25,12 +27,20 @@ public class NavCategoryModel {
         this.name = name;
     }
 
-    public String getDiscount() {
-        return discount;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getImg_url() {

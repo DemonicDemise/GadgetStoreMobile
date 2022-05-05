@@ -4,28 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".activities.ViewAllActivity">
+    tools:context=".activities.NavCategoryActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/view_all_toolbar"
+        android:id="@+id/nav_category_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:titleTextColor="@color/white"
         android:background="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="View All Products"
-        android:layout_marginBottom="10dp"
-        />
+        app:title="@string/detailed_product" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/view_all_rec"
+        android:id="@+id/nav_category_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_all_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/nav_category_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

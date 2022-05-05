@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.android.gadgetstoreproject.activities.ProfileActivity;
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
 import com.example.android.gadgetstoreproject.ui.cart.UserCartFragment;
 import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;

@@ -1,6 +1,7 @@
 package com.example.android.gadgetstoreproject.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.activities.NavCategoryActivity;
 import com.example.android.gadgetstoreproject.models.NavCategoryModel;
 
 import java.util.List;
@@ -34,9 +36,18 @@ public class NavCategoryAdapter extends RecyclerView.Adapter<NavCategoryAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(context).load(navCategoryModelsList.get(position).getImg_url()).into(holder.catImageViewe);
+        Glide.with(context).load(navCategoryModelsList.get(position).getImg_url()).into(holder.catImageView);
         holder.name.setText(navCategoryModelsList.get(position).getName());
         holder.discount.setText(navCategoryModelsList.get(position).getDiscount());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, NavCategoryActivity.class);
+                intent.putExtra("type", navCategoryModelsList.get(position).getType());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -46,11 +57,11 @@ public class NavCategoryAdapter extends RecyclerView.Adapter<NavCategoryAdapter.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView catImageViewe;
+        ImageView catImageView;
         TextView name, description, discount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            catImageViewe = itemView.findViewById(R.id.cat_nav_img);
+            catImageView = itemView.findViewById(R.id.cat_nav_img);
             name = itemView.findViewById(R.id.nav_cat_name);
             discount = itemView.findViewById(R.id.nav_cat_discount);
         }

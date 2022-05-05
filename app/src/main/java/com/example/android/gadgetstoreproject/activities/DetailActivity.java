@@ -1,4 +1,4 @@
-package com.example.android.gadgetstoreproject;
+package com.example.android.gadgetstoreproject.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
 import com.example.android.gadgetstoreproject.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;

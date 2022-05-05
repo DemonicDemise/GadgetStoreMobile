@@ -2,7 +2,6 @@ package com.example.android.gadgetstoreproject.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
-import com.example.android.gadgetstoreproject.ViewAllActivity;
+import com.example.android.gadgetstoreproject.activities.ViewAllActivity;
 import com.example.android.gadgetstoreproject.models.PopularModel;
 
 import java.util.List;

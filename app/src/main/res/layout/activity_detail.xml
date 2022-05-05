@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".activities.DetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/detail_toolbar"
@@ -100,11 +100,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:textSize="16sp"
-        android:textColor="@color/description"
-        android:textAlignment="center"
         android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/arbutus_slab"
         android:text="@string/some_text"
+        android:textAlignment="center"
+        android:textColor="@color/description"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_description" />
@@ -133,6 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
+        android:fontFamily="@font/arbutus_slab"
         android:layout_marginHorizontal="5dp"
         android:textSize="30sp"
         android:textStyle="bold"

@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.gadgetstoreproject.ProfileActivity;
+import com.example.android.gadgetstoreproject.activities.ProfileActivity;
 import com.example.android.gadgetstoreproject.R;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

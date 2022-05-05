@@ -10,11 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GadgetStoreProject">
         <activity
-            android:name=".DetailActivity"
+            android:name=".activities.NavCategoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity
+            android:name=".activities.DetailActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".ViewAllActivity"
+            android:name=".activities.ViewAllActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -26,7 +31,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

@@ -5,27 +5,37 @@
       <map>
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/ic_city.xml" value="0.229" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/ic_home.xml" value="0.2315" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/ic_minus_green.xml" value="0.222" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/ic_name.xml" value="0.2315" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/ic_plus_green.xml" value="0.222" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/ic_search.xml" value="0.2315" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/round_bg.xml" value="0.1425" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/round_border.xml" value="0.2385" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable-v24/wave.xml" value="0.229" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/btn_bag_detailed.xml" value="0.1965" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/button_bg.xml" value="0.1965" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/button_minus_bg.xml" value="0.222" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/button_plus_bg.xml" value="0.1965" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/category_bg.xml" value="0.1745" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/category_gb.xml" value="0.1815" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_add_item.xml" value="0.1965" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.1745" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_cart.xml" value="0.1395" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_clear.xml" value="0.1965" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_menu.xml" value="0.215" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_minus.xml" value="0.1965" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_plus.xml" value="0.222" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_remove_item.xml" value="0.1965" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_reply.xml" value="0.2315" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_search.xml" value="0.15" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_vertical.xml" value="0.152" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/search_gb.xml" value="0.15" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_detail.xml" value="0.2" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_detail2.xml" value="0.18271898533491876" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_nav_category.xml" value="0.19342053111375346" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_register_user.xml" value="0.25416666666666665" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_view_all.xml" value="0.1" />
@@ -43,6 +53,7 @@
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/header.xml" value="0.25416666666666665" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/ic_search.xml" value="0.25416666666666665" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/nav_cat_item.xml" value="0.16799999999999998" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/nav_category_detail_item.xml" value="0.4" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/popular_item.xml" value="0.19342053111375346" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/pupular_item.xml" value="0.264" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/recommended_item.xml" value="0.19342053111375346" />

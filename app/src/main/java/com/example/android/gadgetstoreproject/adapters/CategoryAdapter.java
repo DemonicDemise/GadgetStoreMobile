@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
-import com.example.android.gadgetstoreproject.ViewAllActivity;
+import com.example.android.gadgetstoreproject.activities.ViewAllActivity;
 import com.example.android.gadgetstoreproject.models.CategoryModel;
 
 import java.util.List;

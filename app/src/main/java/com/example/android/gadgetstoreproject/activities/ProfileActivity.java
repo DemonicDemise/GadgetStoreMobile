@@ -1,4 +1,4 @@
-package com.example.android.gadgetstoreproject;
+package com.example.android.gadgetstoreproject.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.gadgetstoreproject.MainActivity;
+import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.models.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

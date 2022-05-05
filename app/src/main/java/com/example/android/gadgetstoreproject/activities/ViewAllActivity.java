@@ -1,4 +1,4 @@
-package com.example.android.gadgetstoreproject;
+package com.example.android.gadgetstoreproject.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.adapters.ViewAllAdapter;
 import com.example.android.gadgetstoreproject.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;

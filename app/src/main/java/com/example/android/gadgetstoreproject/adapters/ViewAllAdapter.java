@@ -12,9 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.android.gadgetstoreproject.DetailActivity;
+import com.example.android.gadgetstoreproject.activities.DetailActivity;
 import com.example.android.gadgetstoreproject.R;
-import com.example.android.gadgetstoreproject.ViewAllActivity;
 import com.example.android.gadgetstoreproject.models.ViewAllModel;
 
 import java.util.List;
