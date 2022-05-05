@@ -60,7 +60,7 @@ public class UserCartFragment extends Fragment {
         recyclerView = root.findViewById(R.id.cart_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        progressBar = root.findViewById(R.id.progressBar);
+        progressBar = root.findViewById(R.id.cart_progressBar);
 
         overTotalAmount = root.findViewById(R.id.total_price);
 
@@ -72,6 +72,7 @@ public class UserCartFragment extends Fragment {
         recyclerView.setAdapter(userCartAdapter);
 
         progressBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
 
         mDb.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
                 .collection("CurrentUser").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -83,6 +84,7 @@ public class UserCartFragment extends Fragment {
                         userCartModelList.add(userCartModel);
                         userCartAdapter.notifyDataSetChanged();
                         progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             }

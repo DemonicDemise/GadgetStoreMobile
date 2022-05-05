@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,11 +29,12 @@ import java.util.List;
 
 public class CategoryFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    List<NavCategoryModel> categoryModelList;
-    NavCategoryAdapter navCategoryAdapter;
+    private RecyclerView recyclerView;
+    private List<NavCategoryModel> categoryModelList;
+    private NavCategoryAdapter navCategoryAdapter;
 
-    FirebaseFirestore db;
+    private FirebaseFirestore db;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +42,10 @@ public class CategoryFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         recyclerView = root.findViewById(R.id.cat_rec);
+        recyclerView.setVisibility(View.GONE);
+
+        progressBar = root.findViewById(R.id.category_progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         //Category Items
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
@@ -57,6 +63,8 @@ public class CategoryFragment extends Fragment {
                                 NavCategoryModel navCategoryModel = document.toObject(NavCategoryModel.class);
                                 categoryModelList.add(navCategoryModel);
                                 navCategoryAdapter.notifyDataSetChanged();
+                                progressBar.setVisibility(View.GONE);
+                                recyclerView.setVisibility(View.VISIBLE);
                             }
                         } else {
                             Toast.makeText(getActivity(), "Error " + task.getException(), Toast.LENGTH_LONG).show();

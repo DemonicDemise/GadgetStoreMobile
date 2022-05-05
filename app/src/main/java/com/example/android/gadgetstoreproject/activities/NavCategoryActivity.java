@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,13 +34,19 @@ public class NavCategoryActivity extends AppCompatActivity {
     private NavCategoryDetailAdapter adapter;
     private FirebaseFirestore mDb;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_category);
 
+        progressBar = findViewById(R.id.nav_category_progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         mDb = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.nav_category_detail);
+        recyclerView.setVisibility(View.GONE);
         String type = getIntent().getStringExtra("type");
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         list = new ArrayList<>();
@@ -56,6 +63,8 @@ public class NavCategoryActivity extends AppCompatActivity {
                         NavCategoryDetailModel navCategoryDetailModel = documentSnapshot.toObject(NavCategoryDetailModel.class);
                         list.add(navCategoryDetailModel);
                         adapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             });
@@ -70,6 +79,8 @@ public class NavCategoryActivity extends AppCompatActivity {
                         NavCategoryDetailModel navCategoryDetailModel = documentSnapshot.toObject(NavCategoryDetailModel.class);
                         list.add(navCategoryDetailModel);
                         adapter.notifyDataSetChanged();
+                        progressBar.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
             });
