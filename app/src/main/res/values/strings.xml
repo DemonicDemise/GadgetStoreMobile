@@ -66,4 +66,6 @@
     <string name="product_time">Product Time</string>
     <string name="product_total_price">Total Price</string>
     <string name="product_total_quantity">Total Quantity</string>
+    <string name="your_order">Your Order Has Been Placed</string>
+    <string name="thank_for_purchase">Thank You For Purchasing Our Product \n Please Come Again</string>
 </resources>

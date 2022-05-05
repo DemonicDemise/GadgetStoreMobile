@@ -135,8 +135,8 @@ public class DetailActivity extends AppCompatActivity {
         cartMap.put("totalPrice", totalPrice);
 
         if(mAuth.getCurrentUser() != null) {
-            mFirestore.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
-                    .collection("CurrentUser").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                    .collection("AddToCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {
                     Toast.makeText(DetailActivity.this, "Added To A Cart", Toast.LENGTH_LONG).show();

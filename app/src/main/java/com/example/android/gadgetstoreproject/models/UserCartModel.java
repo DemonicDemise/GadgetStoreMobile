@@ -1,6 +1,8 @@
 package com.example.android.gadgetstoreproject.models;
 
-public class UserCartModel {
+import java.io.Serializable;
+
+public class UserCartModel implements Serializable {
 
     String productName;
     String productPrice;

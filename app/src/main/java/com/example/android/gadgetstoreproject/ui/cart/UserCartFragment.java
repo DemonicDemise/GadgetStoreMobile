@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.activities.PlaceOrderActivity;
 import com.example.android.gadgetstoreproject.adapters.UserCartAdapter;
 import com.example.android.gadgetstoreproject.models.UserCartModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +30,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +44,8 @@ public class UserCartFragment extends Fragment {
     private List<UserCartModel> userCartModelList;
 
     private ProgressBar progressBar;
-
     private TextView overTotalAmount;
+    private Button buyNow;
 
     public UserCartFragment(){
 
@@ -62,6 +65,8 @@ public class UserCartFragment extends Fragment {
 
         progressBar = root.findViewById(R.id.cart_progressBar);
 
+        buyNow = root.findViewById(R.id.cart_buy_now);
+
         overTotalAmount = root.findViewById(R.id.total_price);
 
         LocalBroadcastManager.getInstance(getActivity())
@@ -74,8 +79,8 @@ public class UserCartFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
 
-        mDb.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
-                .collection("CurrentUser").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                .collection("AddToCart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
@@ -87,6 +92,15 @@ public class UserCartFragment extends Fragment {
                         recyclerView.setVisibility(View.VISIBLE);
                     }
                 }
+            }
+        });
+
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                intent.putExtra("itemList", (Serializable) userCartModelList);
+                startActivity(intent);
             }
         });
 
