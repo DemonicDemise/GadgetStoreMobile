@@ -10,12 +10,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.models.UserCartModel;
+import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,22 +62,26 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
         holder.deleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDb.collection("UserCollection").document(mAuth.getCurrentUser().getUid())
-                        .collection("AddToCart")
-                        .document(userCartModelList.get(position).getDocumentId())
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    userCartModelList.remove(userCartModelList.get(position));
-                                    notifyDataSetChanged();
-                                    Toast.makeText(context, "Item deleter", Toast.LENGTH_LONG).show();
-                                } else {
-                                    Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                if(mAuth.getCurrentUser() != null) {
+                    mDb.collection("UserCollection").document(mAuth.getCurrentUser().getUid())
+                            .collection("AddToCart")
+                            .document(userCartModelList.get(position).getDocumentId())
+                            .delete()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        userCartModelList.remove(userCartModelList.get(position));
+                                        notifyDataSetChanged();
+                                        Toast.makeText(context, "Item deleter", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                } else {
+                    Toast.makeText(context, "You are not logged in! \n Please log in!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

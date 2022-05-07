@@ -25,6 +25,7 @@ import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;
 import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
 import com.example.android.gadgetstoreproject.ui.order.UserOrderFragment;
 import com.example.android.gadgetstoreproject.ui.product.NewProductFragment;
+import com.example.android.gadgetstoreproject.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_profile:
                 if(mAuth.getCurrentUser() != null){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    replaceFragment(new ProfileFragment());
                     Toast.makeText(getApplicationContext(), "Wait you are already logged in", Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(getApplicationContext(), "You are not logged in! Login first", Toast.LENGTH_LONG).show();

@@ -68,4 +68,5 @@
     <string name="product_total_quantity">Total Quantity</string>
     <string name="your_order">Your Order Has Been Placed</string>
     <string name="thank_for_purchase">Thank You For Purchasing Our Product \n Please Come Again</string>
+    <string name="update">Update</string>
 </resources>
