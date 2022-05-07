@@ -1,10 +1,13 @@
 package com.example.android.gadgetstoreproject.ui.home;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
@@ -20,11 +23,14 @@ import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.adapters.CategoryAdapter;
 import com.example.android.gadgetstoreproject.adapters.PopularAdapters;
 import com.example.android.gadgetstoreproject.adapters.RecommendedAdapter;
+import com.example.android.gadgetstoreproject.adapters.ViewAllAdapter;
 import com.example.android.gadgetstoreproject.models.CategoryModel;
 import com.example.android.gadgetstoreproject.models.PopularModel;
 import com.example.android.gadgetstoreproject.models.RecommendedModel;
+import com.example.android.gadgetstoreproject.models.ViewAllModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -34,30 +40,36 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView popularRec, categoryRec, recommendedRec;
-    FirebaseFirestore db;
+    private RecyclerView popularRec, categoryRec, recommendedRec;
+    private FirebaseFirestore mDb;
 
     //Popular Items
-    List<PopularModel> popularModelList;
-    PopularAdapters popularAdapters;
+    private List<PopularModel> popularModelList;
+    private PopularAdapters popularAdapters;
 
     //Home Category
-    List<CategoryModel> categoryList;
-    CategoryAdapter categoryAdapter;
+    private List<CategoryModel> categoryList;
+    private CategoryAdapter categoryAdapter;
 
     //Recommended Items
-    List<RecommendedModel> recommendedList;
-    RecommendedAdapter recommendedAdapter;
+    private List<RecommendedModel> recommendedList;
+    private RecommendedAdapter recommendedAdapter;
 
     //ProgressBar and ScrollView
-    ProgressBar progressBar;
-    ScrollView scrollView;
+    private ProgressBar progressBar;
+    private ScrollView scrollView;
+
+    //Search view
+    private EditText search_box;
+    private List<ViewAllModel> viewAllModelList;
+    private RecyclerView recyclerViewSearch;
+    private ViewAllAdapter viewAllAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container,false);
-        db = FirebaseFirestore.getInstance();
+        mDb = FirebaseFirestore.getInstance();
 
         popularRec = root.findViewById(R.id.pop_rec);
         categoryRec = root.findViewById(R.id.cat_rec);
@@ -76,7 +88,7 @@ public class HomeFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.GONE);
 
-        db.collection("PopularProducts")
+        mDb.collection("PopularProducts")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -101,7 +113,7 @@ public class HomeFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(getActivity(), categoryList);
         categoryRec.setAdapter(categoryAdapter);
 
-        db.collection("HomeCategory")
+        mDb.collection("HomeCategory")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -124,7 +136,7 @@ public class HomeFragment extends Fragment {
         recommendedAdapter = new RecommendedAdapter(getActivity(), recommendedList);
         recommendedRec.setAdapter(recommendedAdapter);
 
-        db.collection("RecommendedItems")
+        mDb.collection("RecommendedItems")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -141,6 +153,59 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
+        search_box = root.findViewById(R.id.search_box);
+        recyclerViewSearch = root.findViewById(R.id.search_rec);
+        viewAllModelList = new ArrayList<>();
+        viewAllAdapter = new ViewAllAdapter(getContext(),viewAllModelList);
+        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerViewSearch.setAdapter(viewAllAdapter);
+        recyclerViewSearch.setHasFixedSize(true);
+        search_box.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.toString().isEmpty()){
+                    viewAllModelList.clear();
+                    viewAllAdapter.notifyDataSetChanged();
+                }else{
+                    searchProduct(editable.toString());
+                }
+            }
+        });
+
+
+
+
+
         return root;
+    }
+
+    private void searchProduct(String type) {
+        if(!type.isEmpty()){
+            mDb.collection("AllProducts").whereEqualTo("type", type).get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful() && task.getResult() != null){
+                                viewAllModelList.clear();
+                                viewAllAdapter.notifyDataSetChanged();
+                                for(DocumentSnapshot doc: task.getResult().getDocuments()){
+                                    ViewAllModel viewAllModel = doc.toObject(ViewAllModel.class);
+                                    viewAllModelList.add(viewAllModel);
+                                    viewAllAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        }
+                    });
+        }
     }
 }
