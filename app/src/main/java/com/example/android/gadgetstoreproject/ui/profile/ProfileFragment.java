@@ -110,7 +110,7 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
-                                    .child("profileImg").setValue(profileUri.toString());
+                                    .child("profileImg").setValue(uri.toString());
                             Toast.makeText(getContext(), "Profile Picture Uploaded", Toast.LENGTH_LONG).show();
                         }
                     });

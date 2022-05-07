@@ -14,12 +14,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.activities.ProfileActivity;
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
+import com.example.android.gadgetstoreproject.models.UserModel;
 import com.example.android.gadgetstoreproject.ui.cart.UserCartFragment;
 import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;
 import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
@@ -28,6 +32,12 @@ import com.example.android.gadgetstoreproject.ui.product.NewProductFragment;
 import com.example.android.gadgetstoreproject.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button signIn;
 
     FirebaseAuth mAuth;
+    FirebaseDatabase mDb;
 
     DrawerLayout drawerLayout;
     NavigationView navigationView, bottomNavigationView;
@@ -46,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+        mDb = FirebaseDatabase.getInstance();
 
         //Hooks
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -72,10 +84,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
-
         navigationView.setCheckedItem(R.id.nav_home);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView headerName = headerView.findViewById(R.id.nav_header_name);
+        TextView headerEmail = headerView.findViewById(R.id.nav_header_email);
+        CircleImageView headerImg = headerView.findViewById(R.id.nav_header_img);
+
+        mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        UserModel userModel = snapshot.getValue(UserModel.class);
+
+                        headerName.setText(userModel.name);
+                        headerEmail.setText(userModel.email);
+                        Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(headerImg);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     //Closes navigation menu when back button is pressed
