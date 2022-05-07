@@ -86,10 +86,10 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
         });
 
         //Pass Total Price to User Cart Fragment
-        totalPrice = totalPrice + userCartModelList.get(position).getTotalPrice();
-        Intent intent = new Intent("UserTotalAmount");
-        intent.putExtra("totalAmount", totalPrice);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+//        totalPrice = totalPrice + userCartModelList.get(position).getTotalPrice();
+//        Intent intent = new Intent("UserTotalAmount");
+//        intent.putExtra("totalAmount", totalPrice);
+//        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override

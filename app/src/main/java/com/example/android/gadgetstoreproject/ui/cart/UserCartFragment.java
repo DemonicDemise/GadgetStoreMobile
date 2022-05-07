@@ -66,13 +66,12 @@ public class UserCartFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         progressBar = root.findViewById(R.id.cart_progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         buyNow = root.findViewById(R.id.cart_buy_now);
 
         overTotalAmount = root.findViewById(R.id.total_price);
 
-        LocalBroadcastManager.getInstance(getActivity())
-                .registerReceiver(mMessageReceiver, new IntentFilter("UserTotalAmount"));
 
         userCartModelList = new ArrayList<>();
         userCartAdapter = new UserCartAdapter(getActivity(), userCartModelList);
@@ -88,7 +87,7 @@ public class UserCartFragment extends Fragment {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot documentSnapshot : task.getResult().getDocuments()){
 
-                        String documentId = documentSnapshot.getId();
+                        documentId = documentSnapshot.getId();
 
                         UserCartModel userCartModel = documentSnapshot.toObject(UserCartModel.class);
 
@@ -99,6 +98,8 @@ public class UserCartFragment extends Fragment {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
+                    
+                    calculateSumList();
                 }
             }
         });
@@ -115,12 +116,11 @@ public class UserCartFragment extends Fragment {
         return root;
     }
 
-    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            int totalBill = intent.getIntExtra("totalAmount", 0);
-            overTotalAmount.setText("Total Bill: " + totalBill + "$");
+    private void calculateSumList() {
+        double totalSum = 0.0;
+        for(UserCartModel model: userCartModelList){
+            totalSum += model.getTotalPrice();
         }
-    };
+        overTotalAmount.setText("Total Sum: " + totalSum);
+    }
 }
