@@ -47,6 +47,8 @@ public class UserCartFragment extends Fragment {
     private TextView overTotalAmount;
     private Button buyNow;
 
+    private String documentId;
+
     public UserCartFragment(){
 
     }
@@ -85,7 +87,13 @@ public class UserCartFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot documentSnapshot : task.getResult().getDocuments()){
+
+                        String documentId = documentSnapshot.getId();
+
                         UserCartModel userCartModel = documentSnapshot.toObject(UserCartModel.class);
+
+                        userCartModel.setDocumentId(documentId);
+
                         userCartModelList.add(userCartModel);
                         userCartAdapter.notifyDataSetChanged();
                         progressBar.setVisibility(View.GONE);
