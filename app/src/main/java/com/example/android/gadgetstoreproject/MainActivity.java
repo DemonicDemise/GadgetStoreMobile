@@ -92,22 +92,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView headerEmail = headerView.findViewById(R.id.nav_header_email);
         CircleImageView headerImg = headerView.findViewById(R.id.nav_header_img);
 
-        mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        UserModel userModel = snapshot.getValue(UserModel.class);
+        if(mAuth.getCurrentUser() != null) {
+            mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            UserModel userModel = snapshot.getValue(UserModel.class);
 
-                        headerName.setText(userModel.name);
-                        headerEmail.setText(userModel.email);
-                        Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(headerImg);
-                    }
+                            headerName.setText(userModel.name);
+                            headerEmail.setText(userModel.email);
+                            Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(headerImg);
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
+        }else{
+            Toast.makeText(getApplicationContext(), "You are not logged in! Login first", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+        }
     }
 
     //Closes navigation menu when back button is pressed

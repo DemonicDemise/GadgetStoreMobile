@@ -21,7 +21,7 @@
                 android:id="@+id/view_all_img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 android:background="@drawable/category_gb"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
@@ -29,22 +31,24 @@ import java.util.HashMap;
 
 public class DetailActivity extends AppCompatActivity {
 
-    ImageView detailedImg;
-    TextView price, rating, description;
-    Button addToCart;
-    ImageView addItem, removeItem;
-    Toolbar detailedToolbar;
+    private ImageView detailedImg;
+    private TextView price, rating, description;
+    private Button addToCart;
+    private Toolbar detailedToolbar;
 
-    ViewAllModel viewAllModel = null;
+    private ViewAllModel viewAllModel = null;
 
-    ImageView addItemImg, removeItemImg;
+    private ImageView addItemImg, removeItemImg;
 
-    TextView quantity;
-    int totalQuantity = 1;
-    int totalPrice = 1;
+    private TextView quantity;
+    private int totalQuantity = 1;
+    private int totalPrice = 1;
 
-    FirebaseFirestore mFirestore;
-    FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+    private FirebaseAuth mAuth;
+
+    private LottieAnimationView lottieLike, lottieRatingBar;
+    private boolean btnLike = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +67,30 @@ public class DetailActivity extends AppCompatActivity {
             viewAllModel = (ViewAllModel) object;
         }
 
+
         detailedImg = findViewById(R.id.img_detail);
-        addItem = findViewById(R.id.add_item);
-        removeItem = findViewById(R.id.remove_item);
 
         price = findViewById(R.id.price_detail);
         rating = findViewById(R.id.datailed_rating);
         description = findViewById(R.id.detail_desc_text);
 
+        lottieRatingBar = findViewById(R.id.lottie_rating_bar);
+        lottieRatingBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lottieRatingBar.playAnimation();
+            }
+        });
+
         quantity= findViewById(R.id.detail_quantity);
+
+        lottieLike = findViewById(R.id.lottie_like);
+        lottieLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lottieLike.playAnimation();
+            }
+        });
 
         if(viewAllModel != null){
             Glide.with(getApplicationContext()).load(viewAllModel.getImg_url()).into(detailedImg);
@@ -90,7 +109,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        addItemImg = findViewById(R.id.add_item);
+        addItemImg = findViewById(R.id.add_item_detail);
         addItemImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +121,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        removeItemImg = findViewById(R.id.remove_item);
+        removeItemImg = findViewById(R.id.remove_item_detail);
         removeItemImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +132,14 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        detailedToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
     }
 
     private void addedToCart() {

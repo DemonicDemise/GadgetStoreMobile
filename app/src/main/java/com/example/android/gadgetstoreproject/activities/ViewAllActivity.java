@@ -44,6 +44,12 @@ public class ViewAllActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.view_all_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         firestore = FirebaseFirestore.getInstance();
 

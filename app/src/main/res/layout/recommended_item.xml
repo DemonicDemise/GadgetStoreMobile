@@ -16,6 +16,7 @@
             android:id="@+id/rec_img"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:scaleType="centerInside"
             android:src="@drawable/img_pop" />
         <TextView
             android:id="@+id/rec_name"

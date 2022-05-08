@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.gadgetstoreproject.MainActivity;
 import com.example.android.gadgetstoreproject.activities.ProfileActivity;
 import com.example.android.gadgetstoreproject.R;
 import com.google.android.gms.auth.api.identity.SignInClient;
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(mAuth.getCurrentUser() != null){
             progressBar.setVisibility(View.VISIBLE);
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             Toast.makeText(getApplicationContext(), "Wait you are already logged in", Toast.LENGTH_LONG).show();
             finish();
         }
