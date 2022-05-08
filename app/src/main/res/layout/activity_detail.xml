@@ -261,14 +261,14 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/add_to_cart"
-        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/btn_bag_detailed"
         android:text="@string/add_to_cart"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:textStyle="bold" />
 </RelativeLayout>

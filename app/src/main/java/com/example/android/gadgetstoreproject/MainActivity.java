@@ -41,9 +41,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ProgressBar progressBar;
-    private Button signIn;
-
     FirebaseAuth mAuth;
     FirebaseDatabase mDb;
 
@@ -162,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     finish();
                 }
                 break;
-
             case R.id.nav_share:
                 Toast.makeText(getApplicationContext(), R.string.share, Toast.LENGTH_LONG).show();
                 break;

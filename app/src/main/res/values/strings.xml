@@ -69,4 +69,10 @@
     <string name="your_order">Your Order Has Been Placed</string>
     <string name="thank_for_purchase">Thank You For Purchasing Our Product \n Please Come Again</string>
     <string name="update">Update</string>
+    <string name="checkout">Checkout</string>
+    <string name="select_method">Select Method</string>
+
+    <string name="agreement">By placing an order you agree to our \n<b>Terms</b> And <b>Conditions</b></string>
+    <string name="place_order">Place Order</string>
+
 </resources>

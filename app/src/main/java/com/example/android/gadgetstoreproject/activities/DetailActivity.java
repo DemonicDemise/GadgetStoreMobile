@@ -75,12 +75,6 @@ public class DetailActivity extends AppCompatActivity {
         description = findViewById(R.id.detail_desc_text);
 
         lottieRatingBar = findViewById(R.id.lottie_rating_bar);
-        lottieRatingBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lottieRatingBar.playAnimation();
-            }
-        });
 
         quantity= findViewById(R.id.detail_quantity);
 
@@ -140,6 +134,18 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        lottieRatingBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btnLike) {
+                    lottieRatingBar.playAnimation();
+                    btnLike = true;
+                }else{
+                    lottieRatingBar.playAnimation();
+                    btnLike = false;
+                }
+            }
+        });
     }
 
     private void addedToCart() {

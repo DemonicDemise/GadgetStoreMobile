@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +20,15 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.L;
 import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.activities.PlaceOrderActivity;
 import com.example.android.gadgetstoreproject.adapters.UserCartAdapter;
 import com.example.android.gadgetstoreproject.models.UserCartModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -107,9 +111,28 @@ public class UserCartFragment extends Fragment {
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                intent.putExtra("itemList", (Serializable) userCartModelList);
-                startActivity(intent);
+
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                        getContext(), R.style.BottomSheetDialogTheme
+                );
+                View bottomSheetView = LayoutInflater.from(getContext())
+                        .inflate(
+                                R.layout.checkout_bottom_layout,
+                                view.findViewById(R.id.checkout_bottom_container)
+                        );
+                    bottomSheetView.findViewById(R.id.place_order_button).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getContext(), "Place Order", Toast.LENGTH_LONG).show();
+                            bottomSheetDialog.dismiss();
+                        }
+                    });
+                    bottomSheetDialog.setContentView(bottomSheetView);
+                    bottomSheetDialog.show();
+
+//                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+//                intent.putExtra("itemList", (Serializable) userCartModelList);
+//                startActivity(intent);
             }
         });
 

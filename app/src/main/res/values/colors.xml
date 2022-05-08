@@ -17,6 +17,8 @@
     <color name="colorAccent">#53b175</color>
     <color name="backgroundForImg">#B3B3B3</color>
 
-
+    <color name="colorDivider">#ECECEC</color>
+    <color name="checkoutBackground">#F2F3F2</color>
     <color name="lineColor">#E2E2E2</color>
+
 </resources>
