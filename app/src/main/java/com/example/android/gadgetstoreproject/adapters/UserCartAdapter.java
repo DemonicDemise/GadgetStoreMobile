@@ -1,5 +1,6 @@
 package com.example.android.gadgetstoreproject.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
 import com.example.android.gadgetstoreproject.models.UserCartModel;
+import com.example.android.gadgetstoreproject.ui.cart.UserCartFragment;
 import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +33,7 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
 
     private Context context;
     private List<UserCartModel> userCartModelList;
-    int totalPrice = 0;
+    private TextView totalAmount;
     FirebaseFirestore mDb;
     FirebaseAuth mAuth;
 
@@ -39,7 +41,6 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
     public UserCartAdapter(Context context, List<UserCartModel> userCartModelList) {
         this.context = context;
         this.userCartModelList = userCartModelList;
-
         mDb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
     }
@@ -51,13 +52,13 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.name.setText(userCartModelList.get(position).getProductName());
-        holder.price.setText(userCartModelList.get(position).getProductPrice());
+        holder.price.setText(userCartModelList.get(position).getProductPrice() + "$");
         holder.date.setText(userCartModelList.get(position).getCurrentDate());
         holder.time.setText(userCartModelList.get(position).getCurrentTime());
         holder.quantity.setText(userCartModelList.get(position).getTotalQuantity());
-        holder.totalPrice.setText(String.valueOf(userCartModelList.get(position).getTotalPrice()));
+        holder.totalPrice.setText(String.valueOf(userCartModelList.get(position).getTotalPrice()) + "$");
 
         holder.deleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +74,7 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
                                     if (task.isSuccessful()) {
                                         userCartModelList.remove(userCartModelList.get(position));
                                         notifyDataSetChanged();
-                                        Toast.makeText(context, "Item deleter", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "Item deleted", Toast.LENGTH_LONG).show();
                                     } else {
                                         Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
@@ -84,12 +85,6 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
                 }
             }
         });
-
-        //Pass Total Price to User Cart Fragment
-//        totalPrice = totalPrice + userCartModelList.get(position).getTotalPrice();
-//        Intent intent = new Intent("UserTotalAmount");
-//        intent.putExtra("totalAmount", totalPrice);
-//        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override

@@ -69,7 +69,7 @@ public class NavCategoryActivity extends AppCompatActivity {
                 }
             });
         }
-        //Getting photo_equipment_and_quadrocopters
+        //Getting photo_equipment_and_quadcopters
         if(type != null && type.equalsIgnoreCase("photo_equipment_and_quadrocopters")){
             mDb.collection("NavCategoryDetailed").whereEqualTo("type","photo_equipment_and_quadrocopters")
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

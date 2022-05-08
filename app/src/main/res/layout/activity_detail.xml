@@ -244,7 +244,6 @@
                         app:layout_constraintEnd_toStartOf="@+id/ratingBar_small"
                         app:layout_constraintTop_toBottomOf="@+id/img_detail" />
                 </LinearLayout>
-
                 <View
                     android:id="@+id/detail_line2"
                     android:layout_width="match_parent"

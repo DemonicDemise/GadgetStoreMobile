@@ -34,6 +34,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +78,6 @@ public class UserCartFragment extends Fragment {
 
         overTotalAmount = root.findViewById(R.id.total_price);
 
-
         userCartModelList = new ArrayList<>();
         userCartAdapter = new UserCartAdapter(getActivity(), userCartModelList);
         recyclerView.setAdapter(userCartAdapter);
@@ -102,8 +103,7 @@ public class UserCartFragment extends Fragment {
                         progressBar.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                     }
-                    
-                    calculateSumList();
+                    calculateSumList(userCartModelList);
                 }
             }
         });
@@ -125,23 +125,22 @@ public class UserCartFragment extends Fragment {
                         public void onClick(View view) {
                             Toast.makeText(getContext(), "Place Order", Toast.LENGTH_LONG).show();
                             bottomSheetDialog.dismiss();
+                            Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                            intent.putExtra("itemList", (Serializable) userCartModelList);
+                            startActivity(intent);
                         }
                     });
                     bottomSheetDialog.setContentView(bottomSheetView);
                     bottomSheetDialog.show();
-
-//                Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-//                intent.putExtra("itemList", (Serializable) userCartModelList);
-//                startActivity(intent);
             }
         });
 
         return root;
     }
 
-    private void calculateSumList() {
+    public void calculateSumList(List<UserCartModel> list) {
         double totalSum = 0.0;
-        for(UserCartModel model: userCartModelList){
+        for(UserCartModel model: list){
             totalSum += model.getTotalPrice();
         }
         overTotalAmount.setText("Total Sum: " + totalSum);
