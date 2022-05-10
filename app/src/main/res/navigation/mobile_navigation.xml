@@ -23,10 +23,10 @@
         tools:layout="@layout/fragment_category">
     </fragment>
     <fragment
-        android:id="@+id/nav_products"
-        android:name="com.example.android.gadgetstoreproject.ui.product.NewProductFragment"
-        android:label="@string/products"
-        tools:layout="@layout/fragment_new_product">
+        android:id="@+id/nav_favourite"
+        android:name="com.example.android.gadgetstoreproject.ui.favourite.FavouriteFragment"
+        android:label="@string/favourites"
+        tools:layout="@layout/fragment_favourite">
     </fragment>
     <fragment
         android:id="@+id/user_orders"

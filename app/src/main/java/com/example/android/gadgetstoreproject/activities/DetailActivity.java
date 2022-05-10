@@ -79,18 +79,12 @@ public class DetailActivity extends AppCompatActivity {
         quantity= findViewById(R.id.detail_quantity);
 
         lottieLike = findViewById(R.id.lottie_like);
-        lottieLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lottieLike.playAnimation();
-            }
-        });
 
         if(viewAllModel != null){
             Glide.with(getApplicationContext()).load(viewAllModel.getImg_url()).into(detailedImg);
             rating.setText(viewAllModel.getRating());
             description.setText(viewAllModel.getDescription());
-            price.setText(viewAllModel.getPrice());
+            price.setText(viewAllModel.getPrice() + "$");
 
             totalPrice = totalQuantity * Integer.valueOf(viewAllModel.getPrice());
         }
@@ -140,12 +134,52 @@ public class DetailActivity extends AppCompatActivity {
                 if(btnLike) {
                     lottieRatingBar.playAnimation();
                     btnLike = true;
-                }else{
+                } else{
                     lottieRatingBar.playAnimation();
                     btnLike = false;
                 }
             }
         });
+        btnLike = false;
+        lottieLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(btnLike){
+                    lottieLike.playAnimation();
+                    btnLike = true;
+
+                }else{
+                    lottieLike.playAnimation();
+                    btnLike = false;
+                }
+                favouriteProduct();
+            }
+        });
+    }
+
+    private void favouriteProduct() {
+        final HashMap<String, Object> favMap = new HashMap<>();
+
+        favMap.put("favName", viewAllModel.getName());
+        favMap.put("favDesc", viewAllModel.getDescription());
+        favMap.put("favPrice", price.getText().toString());
+        favMap.put("favImg", viewAllModel.getImg_url());
+
+        if(mAuth.getCurrentUser() != null) {
+            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                    .collection("FavouriteProducts").add(favMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentReference> task) {
+                    Toast.makeText(DetailActivity.this, "You may seen in favourites section", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+        } else{
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            Toast.makeText(getApplicationContext(), "Wait you are not logged in!", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
     }
 
     private void addedToCart() {

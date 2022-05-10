@@ -40,7 +40,7 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
         holder.name.setText(viewAllModelsList.get(position).getName());
         holder.description.setText(viewAllModelsList.get(position).getDescription());
         holder.rating.setText(viewAllModelsList.get(position).getRating());
-        holder.price.setText(viewAllModelsList.get(position).getPrice() + "/$");
+        holder.price.setText(viewAllModelsList.get(position).getPrice() + "$");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

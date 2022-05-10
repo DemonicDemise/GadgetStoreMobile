@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="3dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/favourite_img"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/mouse_category" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/favourite_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/arbutus_slab"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Logitech G102"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/favourite_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/favourite_name"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/arbutus_slab"
+                    android:maxLines="4"
+                    android:text="3500dpi, black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/favourite_delete"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_clear" />
+
+                <TextView
+                    android:id="@+id/favourite_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/arbutus_slab"
+                    android:text="$20.99"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/favourite_price"
+                    android:src="@drawable/ic_arrow_forward" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/lineColor"
+        android:layout_marginHorizontal="35dp"
+        />
+</androidx.cardview.widget.CardView>

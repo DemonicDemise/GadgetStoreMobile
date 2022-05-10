@@ -74,5 +74,6 @@
 
     <string name="agreement">By placing an order you agree to our \n<b>Terms</b> And <b>Conditions</b></string>
     <string name="place_order">Place Order</string>
+    <string name="favourites">Favourites</string>
 
 </resources>

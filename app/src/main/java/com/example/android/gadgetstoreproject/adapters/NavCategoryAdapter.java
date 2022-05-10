@@ -58,7 +58,7 @@ public class NavCategoryAdapter extends RecyclerView.Adapter<NavCategoryAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView catImageView;
-        TextView name, description, discount;
+        TextView name, discount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             catImageView = itemView.findViewById(R.id.cat_nav_img);

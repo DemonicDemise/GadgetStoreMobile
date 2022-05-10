@@ -15,9 +15,9 @@
             android:title="@string/category"
             />
         <item
-            android:id="@+id/nav_products"
-            android:icon="@drawable/ic_shopping_cart"
-            android:title="@string/products"
+            android:id="@+id/nav_favourite"
+            android:icon="@drawable/ic_favourite"
+            android:title="@string/favourites"
             />
         <item
             android:id="@+id/nav_orders"

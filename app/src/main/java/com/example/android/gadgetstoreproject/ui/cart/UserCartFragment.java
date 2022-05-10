@@ -85,28 +85,30 @@ public class UserCartFragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
 
-        mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
-                .collection("AddToCart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful()){
-                    for(DocumentSnapshot documentSnapshot : task.getResult().getDocuments()){
+        if(mAuth.getCurrentUser() != null) {
+            mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                    .collection("AddToCart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
 
-                        documentId = documentSnapshot.getId();
+                            documentId = documentSnapshot.getId();
 
-                        UserCartModel userCartModel = documentSnapshot.toObject(UserCartModel.class);
+                            UserCartModel userCartModel = documentSnapshot.toObject(UserCartModel.class);
 
-                        userCartModel.setDocumentId(documentId);
+                            userCartModel.setDocumentId(documentId);
 
-                        userCartModelList.add(userCartModel);
-                        userCartAdapter.notifyDataSetChanged();
-                        progressBar.setVisibility(View.GONE);
-                        recyclerView.setVisibility(View.VISIBLE);
+                            userCartModelList.add(userCartModel);
+                            userCartAdapter.notifyDataSetChanged();
+                            progressBar.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
+                        }
+                        calculateSumList(userCartModelList);
                     }
-                    calculateSumList(userCartModelList);
                 }
-            }
-        });
+            });
+        }
 
         buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
