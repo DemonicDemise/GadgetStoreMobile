@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/checkout_bottom_container"
     android:orientation="vertical"
     android:background="@drawable/bottom_sheet_background"
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:fontFamily="@font/arbutus_slab"
-            android:text="@string/checkout"
+            android:text="@string/delivery"
             android:textColor="@color/description"
             android:layout_marginLeft="15dp"
             android:textSize="14sp" />
@@ -45,6 +46,78 @@
             android:textAlignment="textEnd"
             android:fontFamily="@font/arbutus_slab"
             android:text="@string/select_method"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+            <Spinner
+                android:id="@+id/select_method_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:spinnerMode="dropdown"
+                android:layout_marginTop="20dp"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorDivider"/>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/arbutus_slab"
+            android:text="@string/payment"
+            android:textColor="@color/description"
+            android:layout_marginLeft="15dp"
+            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@drawable/flag"
+            android:layout_marginTop="15dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_forward"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorDivider"/>
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/arbutus_slab"
+            android:text="@string/promo_code"
+            android:textColor="@color/description"
+            android:layout_marginLeft="15dp"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="textEnd"
+            android:fontFamily="@font/arbutus_slab"
+            android:text="@string/pick_discount"
             android:textColor="@color/black"
             android:layout_marginRight="15dp"
             android:textStyle="bold"
@@ -73,7 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:fontFamily="@font/arbutus_slab"
-            android:text="@string/checkout"
+            android:text="@string/total_cost"
             android:textColor="@color/description"
             android:layout_marginLeft="15dp"
             android:textSize="14sp" />
@@ -84,87 +157,7 @@
             android:layout_marginTop="20dp"
             android:textAlignment="textEnd"
             android:fontFamily="@font/arbutus_slab"
-            android:text="@string/select_method"
-            android:textColor="@color/black"
-            android:layout_marginRight="15dp"
-            android:textStyle="bold"
-            android:textSize="14sp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="20dp"
-            />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorDivider"/>
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
-            android:fontFamily="@font/arbutus_slab"
-            android:text="@string/checkout"
-            android:textColor="@color/description"
-            android:layout_marginLeft="15dp"
-            android:textSize="14sp" />
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textAlignment="textEnd"
-            android:fontFamily="@font/arbutus_slab"
-            android:text="@string/select_method"
-            android:textColor="@color/black"
-            android:layout_marginRight="15dp"
-            android:textStyle="bold"
-            android:textSize="14sp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_forward"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="20dp"
-            />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorDivider"/>
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
-            android:fontFamily="@font/arbutus_slab"
-            android:text="@string/checkout"
-            android:textColor="@color/description"
-            android:layout_marginLeft="15dp"
-            android:textSize="14sp" />
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textAlignment="textEnd"
-            android:fontFamily="@font/arbutus_slab"
-            android:text="@string/select_method"
+            android:text="62$"
             android:textColor="@color/black"
             android:layout_marginRight="15dp"
             android:textStyle="bold"

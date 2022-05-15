@@ -1,6 +1,7 @@
 package com.example.android.gadgetstoreproject.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.activities.ViewAllActivity;
 import com.example.android.gadgetstoreproject.models.RecommendedModel;
 
 import java.util.List;
@@ -39,6 +41,15 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         holder.name.setText(recommendedModelsList.get(position).getName());
         holder.description.setText(recommendedModelsList.get(position).getDescription());
         holder.recRating.setText(recommendedModelsList.get(position).getRating());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewAllActivity.class);
+                intent.putExtra("type", recommendedModelsList.get(position).getType());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

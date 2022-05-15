@@ -11,10 +11,21 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,12 +49,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    FirebaseAuth mAuth;
-    FirebaseDatabase mDb;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDb;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView, bottomNavigationView;
-    Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private ImageView logoImg;
+
+//    private static int SPLASH_SCREEN_TIMEOUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         //Toolbar
         setSupportActionBar(toolbar);
+
+        logoImg = findViewById(R.id.logoImg);
 
         //Hide or show menu
         Menu menu = navigationView.getMenu();
@@ -85,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView headerName = headerView.findViewById(R.id.nav_header_name);
         TextView headerEmail = headerView.findViewById(R.id.nav_header_email);
         CircleImageView headerImg = headerView.findViewById(R.id.nav_header_img);
+        ImageView navImageView = headerView.findViewById(R.id.nav_background_img);
+        //LinearLayout li = headerView.findViewById(R.id.nav_layout_background_ly);
 
         if(mAuth.getCurrentUser() != null) {
             mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
@@ -96,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             headerName.setText(userModel.name);
                             headerEmail.setText(userModel.email);
                             Glide.with(getApplicationContext()).load(userModel.getProfileImg()).into(headerImg);
+                            Glide.with(getApplicationContext()).load(userModel.getNavBackgroundImg()).into(navImageView);
                         }
 
                         @Override
@@ -108,6 +127,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
+
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//
+//        Animation fadeOut = new AlphaAnimation(1,0);
+//        fadeOut.setInterpolator(new AccelerateInterpolator());
+//        fadeOut.setStartOffset(500);
+//        fadeOut.setDuration(1800);
+//        ImageView logo = findViewById(R.id.logo);
+//        logo.setAnimation(fadeOut);
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                replaceFragment(new HomeFragment());
+//                finish();
+//            }
+//        }, SPLASH_SCREEN_TIMEOUT);
     }
 
     //Closes navigation menu when back button is pressed
@@ -120,6 +157,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -163,6 +202,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(getApplicationContext(), R.string.rate_us, Toast.LENGTH_LONG).show();
                 break;
         }
+        logoImg.setVisibility(View.GONE);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

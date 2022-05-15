@@ -4,46 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/constraint_back"
     tools:context=".activities.PlaceOrderActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         android:fontFamily="@font/arbutus_slab"
         android:text="@string/your_order"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
+        app:layout_constraintVertical_bias="0.3"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/new_order_img"
-        android:layout_width="400dp"
-        android:layout_height="300dp"
-        android:src="@drawable/user_purchase"
-        android:layout_marginTop="80dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/order_accepted_lottie"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="100dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias=".1" />
+        app:lottie_rawRes="@raw/order_accepted" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/arbutus_slab"
         android:text="@string/thank_for_purchase"
-        android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="20sp"
         android:textColor="#F44336"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="80dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_order_img" />
+        app:layout_constraintTop_toBottomOf="@+id/order_accepted_lottie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

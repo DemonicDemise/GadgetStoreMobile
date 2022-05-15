@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +58,8 @@ public class UserCartFragment extends Fragment {
 
     private String documentId;
 
+    private Spinner spinner;
+
     public UserCartFragment(){
 
     }
@@ -84,6 +89,10 @@ public class UserCartFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
+
+        spinner = root.findViewById(R.id.select_method_spinner);
+
+        //selectMethodSpinner = root.findViewById(R.id.select_method_spinner);
 
         if(mAuth.getCurrentUser() != null) {
             mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
@@ -122,20 +131,54 @@ public class UserCartFragment extends Fragment {
                                 R.layout.checkout_bottom_layout,
                                 view.findViewById(R.id.checkout_bottom_container)
                         );
-                    bottomSheetView.findViewById(R.id.place_order_button).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getContext(), "Place Order", Toast.LENGTH_LONG).show();
-                            bottomSheetDialog.dismiss();
-                            Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
-                            intent.putExtra("itemList", (Serializable) userCartModelList);
-                            startActivity(intent);
-                        }
-                    });
-                    bottomSheetDialog.setContentView(bottomSheetView);
-                    bottomSheetDialog.show();
+
+//                bottomSheetView.findViewById(R.id.select_method_spinner).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        Spinner spinner = (Spinner) root.findViewById(R.id.select_method_spinner);
+//                        // Create an ArrayAdapter using the string array and a default spinner layout
+//                        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+//                                R.array.animals, android.R.layout.simple_spinner_item);
+//                        // Specify the layout to use when the list of choices appears
+//                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                        // Apply the adapter to the spinner
+//                        spinner.setAdapter(adapter);
+//                    }
+//                });
+
+                bottomSheetView.findViewById(R.id.place_order_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "Place Order", Toast.LENGTH_LONG).show();
+                        bottomSheetDialog.dismiss();
+                        Intent intent = new Intent(getActivity(), PlaceOrderActivity.class);
+                        intent.putExtra("itemList", (Serializable) userCartModelList);
+                        startActivity(intent);
+                    }
+                });
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
             }
         });
+
+
+//        String[] country = {"India", "USA", "Japan", "Singapore"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, country);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        selectMethodSpinner.setAdapter(adapter);
+//
+//        selectMethodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                String value = adapterView.getItemAtPosition(i).toString();
+//                Toast.makeText(getActivity(), value, Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
         return root;
     }

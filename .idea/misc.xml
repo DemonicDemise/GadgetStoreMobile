@@ -37,11 +37,12 @@
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_shopping_cart.xml" value="0.13" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/ic_vertical.xml" value="0.152" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/drawable/search_gb.xml" value="0.15" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/font/baloo.xml" value="0.2334330910645575" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_detail.xml" value="0.2" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_detail2.xml" value="0.18271898533491876" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_main.xml" value="0.128" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_nav_category.xml" value="0.19342053111375346" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_place_order.xml" value="0.20863616930312098" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/activity_profile.xml" value="0.1" />
@@ -57,14 +58,18 @@
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_favourite_item.xml" value="0.20863616930312098" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_first.xml" value="0.19342053111375346" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_home.xml" value="0.16" />
-        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_my_order.xml" value="0.1" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_my_order.xml" value="0.2" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_new_product.xml" value="0.1506112469437653" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_order_item.xml" value="0.20863616930312098" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/fragment_second.xml" value="0.19342053111375346" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/header.xml" value="0.25416666666666665" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/ic_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/list_item.xml" value="0.20863616930312098" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/nav_cat_item.xml" value="0.16799999999999998" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/nav_category_detail_item.xml" value="0.264" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/nav_header_main.xml" value="0.20863616930312098" />
+        <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/order_accept_layout.xml" value="0.20863616930312098" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/popular_item.xml" value="0.19342053111375346" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/pupular_item.xml" value="0.264" />
         <entry key="..\:/ProjectsForGit/GadgetStoreProject/app/src/main/res/layout/recommended_item.xml" value="0.19342053111375346" />

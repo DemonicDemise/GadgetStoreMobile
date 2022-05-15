@@ -170,7 +170,7 @@ public class DetailActivity extends AppCompatActivity {
                     .collection("FavouriteProducts").add(favMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {
-                    Toast.makeText(DetailActivity.this, "You may seen in favourites section", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "You may seen in favourites section", Toast.LENGTH_LONG).show();
                     finish();
                 }
             });

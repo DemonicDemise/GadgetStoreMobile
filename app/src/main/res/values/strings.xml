@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GadgetStore</string>
     <string name="forgot_password">FORGOT PASSWORD?</string>
-    <string name="new_user_register_now">New userModel? Register Now</string>
+    <string name="new_user_register_now">New user? Register Now</string>
     <string name="top_icon">Top Icon</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -46,7 +46,7 @@
     <string name="cart">Cart</string>
     <string name="discount">20% Off</string>
     <string name="description">Description</string>
-    <string name="price">Price: $</string>
+    <string name="price">Price: </string>
     <string name="title_activity_detail">DetailActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -75,5 +75,19 @@
     <string name="agreement">By placing an order you agree to our \n<b>Terms</b> And <b>Conditions</b></string>
     <string name="place_order">Place Order</string>
     <string name="favourites">Favourites</string>
+    <string name="delivery">Delivery</string>
+    <string name="payment">Payment</string>
+    <string name="promo_code">Promo Code</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="pick_discount">Pick Discount</string>
+    <string name="total_price">Total Price:</string>
+    <string name="bought">Bought</string>
+
+    <string-array name="animals">
+        <item>Кот</item>
+        <item>Кошка</item>
+        <item>Котёнок</item>
+        <item>Животное</item>
+    </string-array>
 
 </resources>

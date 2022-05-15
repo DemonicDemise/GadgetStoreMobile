@@ -5,6 +5,7 @@ public class RecommendedModel {
     String description;
     String rating;
     String img_url;
+    String type;
     int price;
 
     public RecommendedModel(){}
@@ -15,6 +16,14 @@ public class RecommendedModel {
         this.rating = rating;
         this.img_url = img_url;
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

@@ -26,15 +26,15 @@ import java.util.List;
 
 public class ViewAllActivity extends AppCompatActivity {
 
-    FirebaseFirestore firestore;
+    private FirebaseFirestore firestore;
 
-    RecyclerView recyclerView;
-    ViewAllAdapter viewAllAdapter;
-    List<ViewAllModel> viewAllModelList;
+    private RecyclerView recyclerView;
+    private ViewAllAdapter viewAllAdapter;
+    private List<ViewAllModel> viewAllModelList;
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

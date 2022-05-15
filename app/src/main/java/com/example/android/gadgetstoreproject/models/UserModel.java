@@ -1,7 +1,7 @@
 package com.example.android.gadgetstoreproject.models;
 
 public class UserModel {
-    public String name, email, city, password, profileImg;
+    public String name, email, city, password, profileImg, navBackgroundImg;
 
     public UserModel(){
     }
@@ -10,6 +10,22 @@ public class UserModel {
         this.name = name;
         this.email = email;
         this.city = city;
+    }
+
+    public UserModel(String name, String email, String city, String profileImg) {
+        this.name = name;
+        this.email = email;
+        this.city = city;
+        this.profileImg = profileImg;
+    }
+
+    public UserModel(String name, String email, String city, String password, String profileImg, String navBackgroundImg) {
+        this.name = name;
+        this.email = email;
+        this.city = city;
+        this.password = password;
+        this.profileImg = profileImg;
+        this.navBackgroundImg = navBackgroundImg;
     }
 
     public String getName() {
@@ -51,4 +67,10 @@ public class UserModel {
     public void setProfileImg(String profileImg) {
         this.profileImg = profileImg;
     }
+
+    public String getNavBackgroundImg() {
+        return navBackgroundImg;
+    }
+
+    public void setNavBackgroundImg(String navBackgroundImg) { this.navBackgroundImg = navBackgroundImg; }
 }

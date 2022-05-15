@@ -33,7 +33,7 @@
                 android:text="@string/product_name"
                 android:textSize="16sp"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -43,7 +43,7 @@
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -56,7 +56,7 @@
                 android:text="@string/product_price"
                 android:textSize="16sp"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -66,7 +66,7 @@
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -79,7 +79,7 @@
                 android:text="@string/product_date"
                 android:textSize="16sp"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:text="@string/product_date"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -102,7 +102,7 @@
                 android:text="@string/product_time"
                 android:textSize="16sp"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -112,7 +112,7 @@
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -125,7 +125,7 @@
                 android:text="@string/product_total_quantity"
                 android:textSize="16sp"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -135,7 +135,7 @@
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -148,7 +148,7 @@
                 android:text="@string/product_total_price"
                 android:textSize="16sp"
                 android:layout_weight="1"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -158,7 +158,7 @@
                 android:textSize="16sp"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:fontFamily="@font/alice"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />

@@ -47,7 +47,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
         Glide.with(context).load(favouriteModelList.get(position).getFavImg()).into(holder.favImg);
         holder.name.setText(favouriteModelList.get(position).getFavName());
         holder.desc.setText(favouriteModelList.get(position).getFavDesc());
-        holder.price.setText(favouriteModelList.get(position).getFavPrice() + "$");
+        holder.price.setText(favouriteModelList.get(position).getFavPrice());
 
         holder.deleteImg.setOnClickListener(new View.OnClickListener() {
             @Override

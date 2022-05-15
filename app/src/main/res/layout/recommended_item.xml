@@ -26,7 +26,7 @@
             android:textSize="19dp"
             android:maxLines="1"
             android:singleLine="true"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/arbutus_slab"
             android:textStyle="bold"
             />
         <TextView
@@ -35,6 +35,7 @@
             android:maxLines="1"
             android:singleLine="true"
             android:text="Description"
+            android:fontFamily="@font/arbutus_slab"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             />
@@ -56,6 +57,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/arbutus_slab"
                 android:layout_weight="7"
                 />
 

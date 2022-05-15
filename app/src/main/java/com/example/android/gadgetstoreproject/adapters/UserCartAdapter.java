@@ -19,14 +19,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.activities.PlaceOrderActivity;
 import com.example.android.gadgetstoreproject.models.UserCartModel;
 import com.example.android.gadgetstoreproject.ui.cart.UserCartFragment;
 import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHolder> {
@@ -34,6 +37,7 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
     private Context context;
     private List<UserCartModel> userCartModelList;
     private TextView totalAmount;
+    private BottomSheetDialog bottomSheetDialog;
     FirebaseFirestore mDb;
     FirebaseAuth mAuth;
 
@@ -54,11 +58,32 @@ public class UserCartAdapter extends RecyclerView.Adapter<UserCartAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.name.setText(userCartModelList.get(position).getProductName());
-        holder.price.setText(userCartModelList.get(position).getProductPrice() + "$");
+        holder.price.setText(userCartModelList.get(position).getProductPrice());
         holder.date.setText(userCartModelList.get(position).getCurrentDate());
         holder.time.setText(userCartModelList.get(position).getCurrentTime());
         holder.quantity.setText(userCartModelList.get(position).getTotalQuantity());
         holder.totalPrice.setText(String.valueOf(userCartModelList.get(position).getTotalPrice()) + "$");
+
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                bottomSheetDialog = new BottomSheetDialog(context,R.style.BottomSheetDialogTheme);
+//                View bottomSheetView = LayoutInflater.from(context)
+//                        .inflate(
+//                                R.layout.checkout_bottom_layout,
+//                                view.findViewById(R.id.checkout_bottom_container)
+//                        );
+//                bottomSheetView.findViewById(R.id.place_order_button).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        Toast.makeText(context, "Place Order", Toast.LENGTH_LONG).show();
+//                        bottomSheetDialog.dismiss();
+//                    }
+//                });
+//                bottomSheetDialog.setContentView(bottomSheetView);
+//                bottomSheetDialog.show();
+//            }
+//        });
 
         holder.deleteItem.setOnClickListener(new View.OnClickListener() {
             @Override

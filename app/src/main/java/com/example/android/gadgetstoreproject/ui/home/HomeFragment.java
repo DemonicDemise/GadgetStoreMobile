@@ -1,5 +1,6 @@
 package com.example.android.gadgetstoreproject.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.gadgetstoreproject.R;
+import com.example.android.gadgetstoreproject.activities.ViewAllActivity;
 import com.example.android.gadgetstoreproject.adapters.CategoryAdapter;
 import com.example.android.gadgetstoreproject.adapters.PopularAdapters;
 import com.example.android.gadgetstoreproject.adapters.RecommendedAdapter;
@@ -34,6 +37,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +69,9 @@ public class HomeFragment extends Fragment {
     private List<ViewAllModel> viewAllModelList;
     private RecyclerView recyclerViewSearch;
     private ViewAllAdapter viewAllAdapter;
+
+    //View All
+    private TextView popularTextView, exploreTextView, recommendTextView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -106,6 +114,13 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 });
+        popularTextView = root.findViewById(R.id.view_all_popular);
+        popularTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ViewAllActivity.class));
+            }
+        });
 
         //Category Items
         categoryRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
@@ -130,7 +145,7 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-        //Category Items
+        //Recommend Items
         recommendedRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recommendedList = new ArrayList<>();
         recommendedAdapter = new RecommendedAdapter(getActivity(), recommendedList);
@@ -156,7 +171,8 @@ public class HomeFragment extends Fragment {
         search_box = root.findViewById(R.id.search_box);
         recyclerViewSearch = root.findViewById(R.id.search_rec);
         viewAllModelList = new ArrayList<>();
-        viewAllAdapter = new ViewAllAdapter(getContext(),viewAllModelList);
+        viewAllAdapter = new ViewAllAdapter(getContext(), viewAllModelList);
+
         recyclerViewSearch.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewSearch.setAdapter(viewAllAdapter);
         recyclerViewSearch.setHasFixedSize(true);
@@ -182,9 +198,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
+        exploreTextView = root.findViewById(R.id.view_all_explore);
+        exploreTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ViewAllActivity.class));
+            }
+        });
+        recommendTextView = root.findViewById(R.id.view_all_recommended);
+        recommendTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ViewAllActivity.class));
+            }
+        });
 
         return root;
     }
@@ -192,20 +219,20 @@ public class HomeFragment extends Fragment {
     private void searchProduct(String type) {
         if(!type.isEmpty()){
             mDb.collection("AllProducts").whereEqualTo("type", type).get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful() && task.getResult() != null){
-                                viewAllModelList.clear();
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful() && task.getResult() != null){
+                            viewAllModelList.clear();
+                            viewAllAdapter.notifyDataSetChanged();
+                            for(DocumentSnapshot doc: task.getResult().getDocuments()){
+                                ViewAllModel viewAllModel = doc.toObject(ViewAllModel.class);
+                                viewAllModelList.add(viewAllModel);
                                 viewAllAdapter.notifyDataSetChanged();
-                                for(DocumentSnapshot doc: task.getResult().getDocuments()){
-                                    ViewAllModel viewAllModel = doc.toObject(ViewAllModel.class);
-                                    viewAllModelList.add(viewAllModel);
-                                    viewAllAdapter.notifyDataSetChanged();
-                                }
                             }
                         }
-                    });
+                    }
+                });
         }
     }
 }

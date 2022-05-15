@@ -25,7 +25,7 @@
             android:layout_height="30dp"
             android:text="@string/category"
             android:textStyle="bold"
-            android:fontFamily="@font/baloo"
+            android:fontFamily="@font/arbutus_slab"
             android:textAlignment="center"
             android:maxLines="1"
             />
