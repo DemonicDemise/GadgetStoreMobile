@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "764527236178",
+    "firebase_url": "https://gadgetstoreproject-default-rtdb.firebaseio.com",
     "project_id": "gadgetstoreproject",
     "storage_bucket": "gadgetstoreproject.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "764527236178-qiofomfrtb50hbpv4frrvdqej1l32p99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.gadgetstoreproject",
+            "certificate_hash": "b54f2132d79471bcb6f30aef765bf88af91463d6"
+          }
+        },
         {
           "client_id": "764527236178-82blg3nkkfi512ls9k8m9hg0l67117ve.apps.googleusercontent.com",
           "client_type": 3

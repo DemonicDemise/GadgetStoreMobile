@@ -59,6 +59,7 @@ public class ProfileFragment extends Fragment {
         city = root.findViewById(R.id.input_city_profile);
         upd = root.findViewById(R.id.btnUpdate);
 
+
         mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

@@ -19,11 +19,10 @@ public class UserModel {
         this.profileImg = profileImg;
     }
 
-    public UserModel(String name, String email, String city, String password, String profileImg, String navBackgroundImg) {
+    public UserModel(String name, String email, String city, String profileImg, String navBackgroundImg) {
         this.name = name;
         this.email = email;
         this.city = city;
-        this.password = password;
         this.profileImg = profileImg;
         this.navBackgroundImg = navBackgroundImg;
     }

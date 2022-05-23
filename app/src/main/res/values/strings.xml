@@ -82,12 +82,10 @@
     <string name="pick_discount">Pick Discount</string>
     <string name="total_price">Total Price:</string>
     <string name="bought">Bought</string>
-
-    <string-array name="animals">
-        <item>Кот</item>
-        <item>Кошка</item>
-        <item>Котёнок</item>
-        <item>Животное</item>
-    </string-array>
+    <string name="admin_page">Admin Page</string>
+    <string name="add_item">Add Item</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 
 </resources>

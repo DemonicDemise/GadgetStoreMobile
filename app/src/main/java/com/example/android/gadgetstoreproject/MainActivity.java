@@ -1,42 +1,34 @@
 package com.example.android.gadgetstoreproject;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
+import com.example.android.gadgetstoreproject.activities.AdminPageActivity;
 import com.example.android.gadgetstoreproject.authentication.LoginActivity;
 import com.example.android.gadgetstoreproject.models.UserModel;
 import com.example.android.gadgetstoreproject.ui.cart.UserCartFragment;
 import com.example.android.gadgetstoreproject.ui.category.CategoryFragment;
+import com.example.android.gadgetstoreproject.ui.favourite.FavouriteFragment;
 import com.example.android.gadgetstoreproject.ui.home.HomeFragment;
 import com.example.android.gadgetstoreproject.ui.order.UserOrderFragment;
-import com.example.android.gadgetstoreproject.ui.favourite.FavouriteFragment;
 import com.example.android.gadgetstoreproject.ui.profile.ProfileFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private ImageView logoImg;
 
-//    private static int SPLASH_SCREEN_TIMEOUT = 2000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         logoImg = findViewById(R.id.logoImg);
+        logoImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
 
         //Hide or show menu
         Menu menu = navigationView.getMenu();
@@ -127,24 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
-
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//
-//        Animation fadeOut = new AlphaAnimation(1,0);
-//        fadeOut.setInterpolator(new AccelerateInterpolator());
-//        fadeOut.setStartOffset(500);
-//        fadeOut.setDuration(1800);
-//        ImageView logo = findViewById(R.id.logo);
-//        logo.setAnimation(fadeOut);
-//
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                replaceFragment(new HomeFragment());
-//                finish();
-//            }
-//        }, SPLASH_SCREEN_TIMEOUT);
     }
 
     //Closes navigation menu when back button is pressed
@@ -157,8 +135,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -178,6 +154,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_cart:
                 replaceFragment(new UserCartFragment());
                 break;
+            case R.id.nav_admin:
+                startActivity(new Intent(getApplicationContext(), AdminPageActivity.class));
+                break;
             case R.id.nav_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 break;
@@ -195,9 +174,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     finish();
                 }
                 break;
-            case R.id.nav_share:
-                Toast.makeText(getApplicationContext(), R.string.share, Toast.LENGTH_LONG).show();
-                break;
             case R.id.nav_rate_us:
                 Toast.makeText(getApplicationContext(), R.string.rate_us, Toast.LENGTH_LONG).show();
                 break;
@@ -212,5 +188,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.constraint_layout, fragment);
         fragmentTransaction.commit();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(getApplicationContext(), "Application stopped", Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getApplicationContext(), "Application destroyed", Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(getApplicationContext(), "Application restarted", Toast.LENGTH_LONG).show();
+        replaceFragment(new HomeFragment());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getApplicationContext(), "Application is active", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(getApplicationContext(), "Application started", Toast.LENGTH_LONG).show();
+        replaceFragment(new HomeFragment());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(), "Application paused", Toast.LENGTH_LONG).show();
     }
 }
